@@ -96,6 +96,8 @@ Pub/Sub se sastoji od tri osnovna entiteta:
 **Subscriber** - prima poruke
 <br />-> Pretplaćuje se na određene teme (topics) koje su od interesa.
 <br />-> Prima samo one poruke koje odgovaraju temama na koje je pretplaćen.
+<br />
+<br />
 **Broker (posrednik)**- upravlja isporukom poruka između publisher-a i subscriber-a
 <br />-> Osigurava da poruke koje publusher šalje na topik budu isporučene svim subscriber-ima koji slusaju taj topik.
 <br />-> Broker prima poruku i proverava koji su pretplatnici zainteresovani za tu temu.Zatim šalje poruku svim relevantnim pretplatnicima.
