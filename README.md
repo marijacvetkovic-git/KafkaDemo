@@ -71,7 +71,7 @@ Ako aplikacija zahteva obradu podataka u serijama ili ne zahteva nisku latenciju
 Prema Kafiknom sajtu više od 80% svih kompanija sa Fortune 100 liste koristi Kafku. Fortune 100 lista je lista koju svake godine objavljuje Fortune magazin i ta lista rangira najveće kompanije u Sjedinjenim Američkim Državama na osnovu njihovog ukupnog prihoda.To su uglavnom globalne korporacije sa velikim prihodima i uticajem na svetsko tržište.
 
 Neke od kompanije koje koriste Apche Kafku su
-1. **Linkldin**
+1. **Linkedln**
 <br />Svaki korisnički događaj (npr. lajkovanje posta, slanje poruke, pregled profila) kreira "događaj" koji Kafka obrađuje i prosleđuje odgovarajućim sistemima.Može vrsiti obradu nekih podataka..npr postoji bilioteka Kafka streams koja može da radi filtiranje, mapiranje tih podataka..npr da ne yelimo da se obrajduju duplikati ili poruke starije do nekog timestamp-a.
 2. **Uber**
 <br />Pracenje voznje i cuvanje podataka za kasniju analizu
