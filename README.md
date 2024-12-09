@@ -373,6 +373,8 @@ public class UserActivityConsumer {
 KafkaLisnere je deo Kafkinog ekosistema koji se koristi za asinhrono pracenje i obradu poruka koje dolaze sa navednog topika. Kafka listenr se “pretplati” na odredjeni topik i kada poruka stigne on je oprima i obradjuje. Pored topika i consumer grupe moze imati i broj niti kao argument
 
 21. **Na identican nacin kreiramo i ostale conusmere samo ce unutar consumer servisa “security-and-fraud-detection” to biti i consumer group id. A unutar consumer servisa “order-processing-1” i “order-processing-2” , koji ce pripadati istoj consumer grupi, nalazi se group id “order-processing”. Na ovaj nacin recommendation-system i security-and-fraud-detection servisi pirmaju sve poruke , dok “order-processing-1” i “order-processing-2” servisi primaju poruke sa po jedne particije i jedan servis obrajduje podatke za jednu grupu korisnika, a drugi za drugu.**
+    
+22. **Slanje poruke iz Postman-a koja demonstrira odrađenu aktivnost od strane korisnika. Pogledati kako se poruke šalju na topike  i kako consumeri čitaju**
 
-
+![image](https://github.com/user-attachments/assets/8df0d0fe-a12d-4f35-94f1-db5c1e62f1fa)
 
