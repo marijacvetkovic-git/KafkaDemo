@@ -5,12 +5,19 @@
 Apache Kafka je open-source distribuirana platforma za strimovanje event-a (događaja, poruka) i omogućava njihovo skladištenje i brz prenos velikih količina tih podataka u realnom vremenu . 
 Obezbeđuje nisku latenciju( podaci prenose ili obrađuju vrlo brzo, gotovo trenutno),
 visoki protok podataka( sistem može da rukuje ogromnim količinama informacija istovremeno, bez usporavanja ili gubitaka) ,skalabinost i pouzdanost. Zbog ovoih karakterstika je pogodno koristi kafku u sistemima za analitiku, integraciju podataka i event-driven sistemima.
+
 Kafka je nastala 2010.godine u okviru kompanije Linkedln kao rešenje na problem nepostojanja dovoljno dobrog sistema za razmenu poruka. Tadašnji sistemi nisu bili dovoljno brzi, skalabilni i nisu mogli da podrže veliki protok podataka.
+
 Ti sistemi su bili spori, imali su ograničen protok podataka i jednostavno nisu bili dizajnirani da obrađuju tokove podataka u realnom vremenu.
 Ovakvi sistemi, poput ActiveMQ ili RabbitMQ, nisu dizajnirani da se nose sa ovolikom količinom podataka i zahtevima za brzom obradom. Oni obično imaju:
-Ograničen kapacitet: Ne mogu da obrade veliki broj poruka istovremeno.
-Veću latenciju: Obrada i slanje poruka traje duže, što je neprihvatljivo za aplikacije u realnom vremenu.
-Teško skaliranja: Ovi sistemi teško mogu da povećaju kapacitet kako raste broj korisnika i količina podataka.
+
+1. **Ograničen kapacitet:**
+ Ne mogu da obrade veliki broj poruka istovremeno.
+2. **Veću latenciju:**
+ Obrada i slanje poruka traje duže, što je neprihvatljivo za aplikacije u realnom vremenu.
+3. **Teško skaliranja:**
+   Ovi sistemi teško mogu da povećaju kapacitet kako raste broj korisnika i količina podataka.
+   
  Inženjerski tim LinkedIn-a rešio je ova ograničenja kreiranjem novog sistema za razmenu poruka koji može da rukuje velikim količinama tokova podataka u realnom vremenu da se skalira horizontalno. To rešenej je dobilo ime po piscu Franc-u Kafki.
 Sa porastom popularnosti drustevnih mreza ovi problemi su postajali sve veći probelm tako da su koosnivaci resili da napre sistem koji ce ispuniti njihove zahteve.
 
@@ -48,10 +55,10 @@ Umesto da radi sa fizičkim fajlovima, Kafka tretira svaki log kao tok poruka, �
 Takođe služi kao spoljasni commit-log,event sourcing i jos mnogo toga.
 
 ### Mane
-1. Kompleksna imeplementacija i upravljanje
-2. Kafka zahteva značajnu računarsku i mrežnu snagu, posebno za veće sisteme sa velikim brojem poruka.Potrebno je ulaganje u infrastrukturu kako bi Kafka mogla da pravilno funkcioniše, a resursi (CPU, memorija, diskovni prostor) moraju biti pažljivo planirani, kako bi se obezbedio optimalan rad.
-3. Potrebno je imati dobre alate za monitoring i administraciju Kafke, <br /> jer bez odgovarajuće kontrole i praćenja rada Kafke, mogu nastati problemi poput gubitka podataka, zastoja u obradama i neefikasnog skaliranja.
-4. Kafka je bolje prilagođena za obradu podataka u stvarnom vremenu, a nije najbolja opcija za sisteme koji se oslanjaju na batch processing. Ako vaša aplikacija zahteva obradu podataka u serijama ili ne zahteva nisku latenciju, rešenja kao što su Apache Spark ili Hadoop mogu biti pogodnija.
+1. **Kompleksna imeplementacija i upravljanje**
+2. **Kafka zahteva značajnu računarsku i mrežnu snagu, posebno za veće sisteme sa velikim brojem poruka.Potrebno je ulaganje u infrastrukturu kako bi Kafka mogla da pravilno funkcioniše, a resursi (CPU, memorija, diskovni prostor) moraju biti pažljivo planirani, kako bi se obezbedio optimalan rad.**
+3. **Potrebno je imati dobre alate za monitoring i administraciju Kafke, <br /> jer bez odgovarajuće kontrole i praćenja rada Kafke, mogu nastati problemi poput gubitka podataka, zastoja u obradama i neefikasnog skaliranja.**
+4. **Kafka je bolje prilagođena za obradu podataka u stvarnom vremenu, a nije najbolja opcija za sisteme koji se oslanjaju na batch processing. Ako vaša aplikacija zahteva obradu podataka u serijama ili ne zahteva nisku latenciju, rešenja kao što su Apache Spark ili Hadoop mogu biti pogodnija.**
 
 Na osnovu mana dolazimo do sledećeg zaključka.
 
@@ -148,25 +155,25 @@ Ova jednostvavna aplikacija ce pokazati konfiguraciju kafke, pariticonisanje top
 
 ## Demonstracija rada Apache Kafke i njegovog pub-sub mehanizma
 ### Instalacija i namestanje konfiguracije Kafke (na Windows OS)
-1. Prvi korak je otići na zvaničnu dokumentaciju Apache Kafka i skunti poslednju verziju. https://www.apache.org/dyn/closer.cgi?path=/kafka/3.9.0/kafka_2.13-3.9.0.tgz
-2. Sledeći korak je prebaciti folder na željenu lokaciju i tu ga ekstrakovati 
-3. Treba izmeniti konfiguraciju kafke. Prvo treba izemeniti server.properties, tj izmeniti putanju ka logs.dirs
-4. Izmeniti putanju za dataDir
-5. Otvoriti dva cmd i pozicionirati se unutar foldera gde ste sačuvali skinute podatke 
-6. U prvom otkucati komandu “.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties” koja sluzi za pokretanje Zookeeper-a
-7. U drugom otkucati komadnu “.\bin\windows\kafka-server-start.bat .\config\server.properties” koja služi za pokretanje broker-a.
+1. **Prvi korak je otići na zvaničnu dokumentaciju Apache Kafka i skunti poslednju verziju. https://www.apache.org/dyn/closer.cgi?path=/kafka/3.9.0/kafka_2.13-3.9.0.tgz**
+2. **Sledeći korak je prebaciti folder na željenu lokaciju i tu ga ekstrakovati**
+3. **Treba izmeniti konfiguraciju kafke. Prvo treba izemeniti server.properties, tj izmeniti putanju ka logs.dirs**
+4. **Izmeniti putanju za dataDir**
+5. **Otvoriti dva cmd i pozicionirati se unutar foldera gde ste sačuvali skinute podatke** 
+6. **U prvom otkucati komandu “.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties” koja sluzi za pokretanje Zookeeper-a**
+7. **U drugom otkucati komadnu “.\bin\windows\kafka-server-start.bat .\config\server.properties” koja služi za pokretanje broker-a.**
 Ako vam se sve pokreće kako treba možemo krenuti sa kreiranjem SpringBoot aplikacije.
 
 ### Kreiranje  producer servisa
-8. Otići ćemo na sajt https://start.spring.io i kreirati naš producer servis sa sledećom konfiguracijom
+8. **Otići ćemo na sajt https://start.spring.io i kreirati naš producer servis sa sledećom konfiguracijom**
   ![image](https://github.com/user-attachments/assets/acd0d42a-222f-4d71-8b6e-98f1fa7e94e4)
 
 
-9. Biramo poslednju verziju Spring Boot-a koja nije SNAPSHOT, biramo Maven kao project menagement alat. Biramo naziv grupe, artifaktorija i projekta. Nakon toga ukljucujemo dependecy-je. Nama je bitan dependecy “Spring for Apache Kafka” koji nam omogućava rad sa Kafkom i Spring Web da bismo mogli da koristimo  REST prilikom testiranja rada naše aplikacije. Nakon toga kliknemo na dugme generate gde ce nam se kreirati pocetna verzija projekta i preuzeti.
+9. **Biramo poslednju verziju Spring Boot-a koja nije SNAPSHOT, biramo Maven kao project menagement alat. Biramo naziv grupe, artifaktorija i projekta. Nakon toga ukljucujemo dependecy-je. Nama je bitan dependecy “Spring for Apache Kafka” koji nam omogućava rad sa Kafkom i Spring Web da bismo mogli da koristimo  REST prilikom testiranja rada naše aplikacije. Nakon toga kliknemo na dugme generate gde ce nam se kreirati pocetna verzija projekta i preuzeti.**
 
 ### Analiza unapred kreiranog koda radi demonstracije
-10. Za kreiranje aplikacije ja sam se odlucila za Intellij, ali moze se koristi bilo koji drugi IDE.
-11. Otvoriti preuzet projekat i prvo sto se treba pogledati jeste application.properites
+10. **Za kreiranje aplikacije ja sam se odlucila za Intellij, ali moze se koristi bilo koji drugi IDE.**
+11. **Otvoriti preuzet projekat i prvo sto se treba pogledati jeste application.properites**
 ```properties
 spring.application.name=event-producer
 spring.kafka.bootstrap-servers=localhost:9092
@@ -187,7 +194,7 @@ Kafka očekuje da se svi podaci koji se šalju (ključevi i vrednosti poruka) ko
 Efikasnu obradu i skladištenje podataka – Kafka interno radi s binarnim podacima.
 Interoperabilnost, tj da podaci koju su kreirani u jednoj aplikaciji i mogu biti konzumirani u drugoj, čak i ako su napisane u različitim programskim jezicima.
 
-12. Kreiranje topika “user-activity” i “user-order”
+12. **Kreiranje topika “user-activity” i “user-order”**
 ```java
 package com.example.event_producer.configuration;
 
@@ -212,7 +219,7 @@ public class TopicConfiguration {
 
 Topici se kreiraju sa 2 particije i za njihovo kreiranje koristi se klase NewTopic i TopicBuilder iz Spring Kafka bilioteke. Klasa TopicBuilder koristi “Builder” pattern za kreiranje topika.<br /> Omogućava da se kroz kod kreira topik  bez potrebe za korišćenjem CLI komandi ili manuelne konfiguracije.To je klasa koja olaksava proces kreiranja i konfiguracije topika i pruzi api za kreiranje NewTopic objekta.Prilikom build() fje vraca NewTopic instancu i tada Spring Kafka koristi Spring Admin Api da kreira topik na serveru
 
-13. Kreiranje klase koja predstavlja poruku
+13. **Kreiranje klase koja predstavlja poruku**
 
 ```java
     public ActivityMessage() {
@@ -274,7 +281,7 @@ Topici se kreiraju sa 2 particije i za njihovo kreiranje koristi se klase NewTop
 ```
 
 
-15. Kreiranje producer klase
+14. **Kreiranje producer klase**
 
 
 ```java
@@ -302,7 +309,7 @@ Kafka template je genericka klasa za slanje poruka na topik. Prilikom njenog “
 <br /> Povezuje se sa konfiguracijama poput serlijalizatora. Spring automatski kreira KafkaTemplate bazirano na konfiguraciji, tako da je moguće direktno koristiti injekciju u klasi. Ova klasa omogućava jednostavno i fleksibilno upravljanje komunikacijom sa Kafka klasterom.
 Ovde se koristi send metoda ciji su argumenti, topik na koji se poruka salje, id poruke i njeni podaci.
 
-15. Kreiranje controllera da bi mogao Postman da se koristi za demonstraciju slanja aktivnosti.
+15. **Kreiranje controllera da bi mogao Postman da se koristi za demonstraciju slanja aktivnosti.**
 
 ```java
 @RestController
@@ -320,10 +327,10 @@ public class UserActivityProducerController {
 }
 ```
 
-17. Kreiranje consumer aplikacije “recommendation-system”
+16. **Kreiranje consumer aplikacije “recommendation-system”**
 ![image](https://github.com/user-attachments/assets/f4728e88-faec-4d5a-92fe-50968c833a1a)
 
-18. Pored ovog treba dodati dependency za deserilizaciju Json objekata u Java klase.
+17. **Pored ovog treba dodati dependency za deserilizaciju Json objekata u Java klase.**
    ```java
  <groupId>com.fasterxml.jackson.core</groupId>
    <artifactId>jackson-databind</artifactId>
@@ -331,7 +338,7 @@ public class UserActivityProducerController {
 </dependency>
 ```
 
-19.  Namestamo konfiguraicju unuatar application.properites
+18.  **Namestamo konfiguraicju unuatar application.properites**
 
 ```properties
 spring.application.name=recommendation-system
@@ -345,8 +352,8 @@ server.port=81
 
 Namestamo id conusmer grupe i na koji nacin zelimo da se deserijalizuju poruke koje stizu sa kafke. Zelimo da se bajtovi za kljuc deserijalizuju u String ,a ya vrednost se koristi JsonDeserializer i posle toga se pomocu Jackson biblioteke mapira na ActivityMessage objekat.
 
-19. Kreiramo ActivityMessage klasu koja je ustiom paketu kao i klasa unutar producera. Mogli smo da stavimo klasu u jedan zajednicki paket i da je ukljucimo, ali posto je jedna klasa u pitanju odradicemo na ovaj nacin
-20. Kreirajmo consumer-a
+19. **Kreiramo ActivityMessage klasu koja je ustiom paketu kao i klasa unutar producera. Mogli smo da stavimo klasu u jedan zajednicki paket i da je ukljucimo, ali posto je jedna klasa u pitanju odradicemo na ovaj nacin**
+20. **Kreirajmo consumer-a**
 ```java
 @Component
 public class UserActivityConsumer {
@@ -365,7 +372,7 @@ public class UserActivityConsumer {
 
 KafkaLisnere je deo Kafkinog ekosistema koji se koristi za asinhrono pracenje i obradu poruka koje dolaze sa navednog topika. Kafka listenr se “pretplati” na odredjeni topik i kada poruka stigne on je oprima i obradjuje. Pored topika i consumer grupe moze imati i broj niti kao argument
 
-21. Na identican nacin kreiramo i ostale conusmere samo ce unutar consumer servisa “security-and-fraud-detection” to biti i consumer group id. A unutar consumer servisa “order-processing-1” i “order-processing-2” , koji ce pripadati istoj consumer grupi, nalazi se group id “order-processing”. Na ovaj nacin recommendation-system i security-and-fraud-detection servisi pirmaju sve poruke , dok “order-processing-1” i “order-processing-2” servisi primaju poruke sa po jedne particije i jedan servis obrajduje podatke za jednu grupu korisnika, a drugi za drugu.
+21. **Na identican nacin kreiramo i ostale conusmere samo ce unutar consumer servisa “security-and-fraud-detection” to biti i consumer group id. A unutar consumer servisa “order-processing-1” i “order-processing-2” , koji ce pripadati istoj consumer grupi, nalazi se group id “order-processing”. Na ovaj nacin recommendation-system i security-and-fraud-detection servisi pirmaju sve poruke , dok “order-processing-1” i “order-processing-2” servisi primaju poruke sa po jedne particije i jedan servis obrajduje podatke za jednu grupu korisnika, a drugi za drugu.**
 
 
 
